@@ -1,12 +1,9 @@
 FROM amazon/aws-lambda-python:3.8
 
-WORKDIR /app
-
-COPY requirements.txt .
+COPY requirements.txt ${LAMBDA_TASK_ROOT}
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY modelDownload.py .
-RUN python modelDownload.py 
+COPY ./models ${LAMBDA_TASK_ROOT}/models
 
-COPY . .
+COPY imageCaption.py ${LAMBDA_TASK_ROOT}
 CMD ["imageCaption.handler"]
