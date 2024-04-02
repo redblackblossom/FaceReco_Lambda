@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 #pytorch model
 imageCaption/models
+
+#elasticsearch id and password
+esQuery.py
